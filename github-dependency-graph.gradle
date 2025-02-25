@@ -11,6 +11,9 @@ gradle.beforeSettings {
   System.setProperty("GITHUB_DEPENDENCY_GRAPH_REF", "REF_not_set")
   System.setProperty("GITHUB_DEPENDENCY_GRAPH_SHA", "SHA_not_set")
   System.setProperty("DEPENDENCY_GRAPH_REPORT_DIR", "./build/reports/dependency-graph-snapshots")
+  if (!System.getProperty("GITHUB_DEPENDENCY_GRAPH_WORKSPACE")) {
+  	System.setProperty("GITHUB_DEPENDENCY_GRAPH_WORKSPACE", new File(".").getAbsolutePath())
+  }
 }
 
 import org.gradle.github.GitHubDependencyGraphPlugin
